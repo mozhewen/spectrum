@@ -1,4 +1,5 @@
 # spectrum
+
 MATLAB scripts used to plot audio spectrum
 
 ## Description
@@ -9,12 +10,12 @@ MATLAB scripts used to plot audio spectrum
 
 + **refreshFig.m**
 
-    This function is called from spectrum.m at regular intervals. It is used to compute the short-time Fourier transform (STFT) of the audio sampled data with a Hann window, and plot the spectrum in a bar graph. Each bar in the graph is corresponding to a pitch in 12 equal temperament tuned relative to the standard pitch (440Hz) . 
+    This function is called from spectrum.m at regular intervals. It is used to compute the short-time Fourier transform (STFT) of the audio sampled data with a Hann window function, and plot the spectrum in a bar graph. Each bar in the graph is corresponding to a pitch in 12 equal temperament tuned relative to the standard pitch (440Hz). 
     ![demo1](demo/2U%20-%20David%20Guetta;%20Justin%20Bieber.gif?raw=true)
 
 + **refreshFig-2.m**
 
-    Similar to refreshFig.m, but with different(exponential) window function. 
+    Similar to refreshFig.m, but with a different (exponential) window function. 
 
 + **refreshFig-3.m**
 
