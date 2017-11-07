@@ -14,7 +14,7 @@ fprintf('解析音频文件...');
 fprintf('[完成]\n');
 fprintf('准备播放...');
 % 获得句柄
-figure;
+figure('Position', [0 0 800 600]);
 ax = gca;
 ax.NextPlot = 'replacechildren';
 % 播放音乐

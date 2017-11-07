@@ -18,7 +18,7 @@ v = VideoWriter([pathname name '.mp4'], 'MPEG-4');
 v.FrameRate = 20;                   % Ö¡Æµ20
 open(v);
 % »ñµÃ¾ä±ú
-fig = figure;
+fig = figure('Position', [0 0 800 600]);
 fig.Color = 'white';
 ax = gca;
 ax.NextPlot = 'replacechildren';
@@ -53,7 +53,9 @@ while pos <= L
                (1+vol-A).*cos((0:num-1)/num*2*pi+phase)];
         A_y = [(1+vol+A).*sin((0:num-1)/num*2*pi+phase);...
                (1+vol-A).*sin((0:num-1)/num*2*pi+phase)];
-        plot(ax, A_x, A_y, 'Color', 'blue', 'LineWidth', 1.5);
+        plot(ax, A_x, A_y,...
+            'Color', [0 0.450980392156863 0.741176470588235],...
+            'LineWidth', 2);
         axis(ax, [-1.5 1.5 -1.5 1.5]);
         axis(ax, 'square');
         axis(ax, 'off');

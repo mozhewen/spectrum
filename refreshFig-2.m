@@ -30,9 +30,13 @@ function refreshFig(hObject, ~)
             A(i+49) = sA2(upper)-sA2(lower);
         end
         A = sqrt(A)+0.0005;         % 加上偏移，使得条形图有一定初始高度
-        bar(ax, A, 0.5, 'EdgeColor', 'none');
+        bar(ax, A, 0.5,...
+            'EdgeColor', 'none',...
+            'FaceColor', [0 0.450980392156863 0.741176470588235]);
         hold(ax, 'on');
-        b = bar(ax, -A, 0.5, 'EdgeColor', 'none');
+        b = bar(ax, -A, 0.5,...
+            'EdgeColor', 'none',...
+            'FaceColor', [0 0.450980392156863 0.741176470588235]);
         b.BaseLine.LineStyle = 'none';
         axis(ax, [1 97 -0.15 0.15]);
         title(ax, name, 'Interpreter', 'none');

@@ -18,7 +18,7 @@ v = VideoWriter([pathname name '.mp4'], 'MPEG-4');
 v.FrameRate = 20;                   % 帧频20
 open(v);
 % 获得句柄
-fig = figure;
+fig = figure('Position', [0 0 800 600]);
 ax = gca;
 ax.NextPlot = 'replacechildren';
 % 主循环
@@ -48,11 +48,15 @@ while pos <= L
             A(i+49) = sA2(upper)-sA2(lower);
         end
         A = sqrt(A)+0.0005;         % 加上偏移，使得条形图有一定初始高度
-        bar(ax, A, 0.5, 'EdgeColor', 'none');
+        bar(ax, A, 0.5,...
+            'EdgeColor', 'none',...
+            'FaceColor', [0 0.450980392156863 0.741176470588235]);
         hold(ax, 'on');
-        b = bar(ax, -A, 0.5, 'EdgeColor', 'none');
+        b = bar(ax, -A, 0.5,...
+            'EdgeColor', 'none',...
+            'FaceColor', [0 0.450980392156863 0.741176470588235]);
         b.BaseLine.LineStyle = 'none';
-        axis(ax, [1 97 -0.125 0.125]);
+        axis(ax, [1 97 -0.15 0.15]);
         title(ax, name, 'Interpreter', 'none');
         xlabel(ax, '$$ f/\mathrm{Hz} $$', 'Interpreter', 'latex');
         set(ax, 'XTick', (-4:4).*12+49);

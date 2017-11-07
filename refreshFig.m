@@ -1,5 +1,5 @@
-% spectrum (ÒôÆµÆµÆ×·ÖÎö)
-% refreshFig º¯Êý
+% spectrum (ï¿½ï¿½ÆµÆµï¿½×·ï¿½ï¿½ï¿½)
+% refreshFig ï¿½ï¿½ï¿½ï¿½
 
 function refreshFig(hObject, ~)
     y = hObject.UserData{1};
@@ -8,8 +8,8 @@ function refreshFig(hObject, ~)
     name = hObject.UserData{3};
     fs = hObject.SampleRate;
     pos = hObject.CurrentSample;
-    N = round(fs*0.3);              % fftµãÊý2N+1
-    N1 = round(fs*0.12);            % ´°¿í2*0.12s
+    N = round(fs*0.3);              % fftï¿½ï¿½ï¿½ï¿½2N+1
+    N1 = round(fs*0.12);            % ï¿½ï¿½ï¿½ï¿½2*0.12s
 
     if ~isvalid(ax)
         stop(hObject);
@@ -19,7 +19,7 @@ function refreshFig(hObject, ~)
         y1 = [zeros(pos_i-pos+N,1);...
               mean(y(pos_i:pos_f,:),2);...
               zeros(pos+N-pos_f,1)]...
-             .*[zeros(N-N1,1); hann(2*N1+1); zeros(N-N1,1)]*2;  % ³ËÉÏHanning´°º¯Êý
+             .*[zeros(N-N1,1); hann(2*N1+1); zeros(N-N1,1)]*2;  % ï¿½ï¿½ï¿½ï¿½Hanningï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         y_hat = fft(y1)/(2*N+1);
         sA2 = cumsum(abs(y_hat).^2);
         A = zeros(97,1);
@@ -28,12 +28,16 @@ function refreshFig(hObject, ~)
             lower = floor(440*2.^((i-0.5)/12)*(2*N+1)/fs)+1;
             A(i+49) = sA2(upper)-sA2(lower);
         end
-        A = sqrt(A)+0.0005;         % ¼ÓÉÏÆ«ÒÆ£¬Ê¹µÃÌõÐÎÍ¼ÓÐÒ»¶¨³õÊ¼¸ß¶È
-        bar(ax, A, 0.5, 'EdgeColor', 'none');
+        A = sqrt(A)+0.0005;         % ï¿½ï¿½ï¿½ï¿½Æ«ï¿½Æ£ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ß¶ï¿½
+        bar(ax, A, 0.5,...
+            'EdgeColor', 'none',...
+            'FaceColor', [0 0.450980392156863 0.741176470588235]);
         hold(ax, 'on');
-        b = bar(ax, -A, 0.5, 'EdgeColor', 'none');
+        b = bar(ax, -A, 0.5,...
+            'EdgeColor', 'none',...
+            'FaceColor', [0 0.450980392156863 0.741176470588235]);
         b.BaseLine.LineStyle = 'none';
-        axis(ax, [1 97 -0.125 0.125]);
+        axis(ax, [1 97 -0.15 0.15]);
         title(ax, name, 'Interpreter', 'none');
         xlabel(ax, '$$ f/\mathrm{Hz} $$', 'Interpreter', 'latex');
         set(ax, 'XTick', (-4:4).*12+49);
