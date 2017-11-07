@@ -20,7 +20,7 @@ MATLAB scripts used to plot audio spectrum
 + **refreshFig-3.m**
 
     Similar to refreshFig.m, but it draws a circular spectrum and does not use logarithmic scale for frequency. 
-    ![demo2](demo/EMBRZ%20-%20Breathe%20(Original%20Mix)-1.gif?raw=true)
+    ![demo2](demo/EMBRZ%20-%20Breathe%20(Original%20Mix)-2.gif?raw=true)
 
 + **spectrum2.m**
 
